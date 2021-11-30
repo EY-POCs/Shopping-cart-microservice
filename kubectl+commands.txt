@@ -1,0 +1,103 @@
+
+kubectl
+	see organized commands
+
+Change kubectl context from remote kubernetes to your local machine.
+kubectl config get-contexts
+kubectl config use-context docker-desktop
+
+kubectl --help
+kubectl version
+kubectl cluster-info
+kubectl get nodes 
+kubectl get pod
+kubectl get services
+kubectl get all
+kubectl get all -- pods, services, deployments..
+
+-----------
+Impritive - Declarative
+Impritive Commands
+
+kubectl run [container_name] --image=[image_name]
+kubectl port-forward [pod] [ports]
+
+kubectl create [resource]
+kubectl apply [resource] -- create or modify resources
+
+-----------
+kubectl run swn-nginx --image=nginx
+kubectl get pods
+kubectl get all
+
+kubectl port-forward swn-nginx 8080:80
+kubectl delete deployment swn-nginx
+kubectl get pods --watch
+---------
+
+kubectl create
+	-- there is no pod 
+	so its abraction from deployment so we should create deployment
+
+kubectl create deployment name --image=image [--dry-run] [options]
+kubectl create deployment nginx-depl --image=nginx 
+	-- deployment is an abstraction of replicasets and deployment
+	-- replicaset is an abstraction of pods.
+-- the above create deployment therefore will create replicasets and pods.
+
+	--update the deployment.
+kubectl edit deployment nginx-depl -- this will open notepad.
+
+kubectl get deployment
+kubectl get pod
+kubectl get replicaset
+kubectl get all
+---------
+Debugging Pods
+
+kubectl logs nginx-depl-5c8bf76b5b-tzv2k
+
+-- create new depl - mongo
+kubectl create deployment mongo-depl --image=mongo
+kubectl get pod
+
+Troubleshooting
+------------------------------------------------
+kubectl describe pod mongo-depl-5fd6b7d4b4-6xzjd
+kubectl logs mongo-depl-5fd6b7d4b4-6xzjd
+
+Create database interactive terminal.
+------------------------------------------------
+kubectl exec mongo-depl-5fd6b7d4b4-lgjtq -it sh
+
+
+	ls
+	mongo
+		show dbs
+
+-- delete reasource
+
+kubectl get deployment
+kubectl get replicaset
+
+kubectl delete deployment nginx-depl
+kubectl delete deployment mongo-depl
+kubectl delete pod <podname>
+
+kubectl get pod --watch
+kubectl get replicaset
+---------
+
+Creating resources using imperative mean.
+kubectl run <imagename> --image-name --replicas 2
+	example: 
+	kubectl run swn-nginx --image=nginx
+	-- The above command will download nginx and create, the node and the pod in which the container will live
+	-- one pod, one node will be created.
+
+Create resources using declarative mean.
+kubectl appy -f <filename.yaml>
+
+	---------------------------------------------------------------
+	If we want to see our containers running in our pod, we use port-forwading
+kubectl port-forward swn-nginx 8080:80
