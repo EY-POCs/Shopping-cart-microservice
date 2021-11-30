@@ -6,3 +6,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+
+  shopping.db:
+    image: mongo
