@@ -5,6 +5,7 @@ kubectl
 Change kubectl context from remote kubernetes to your local machine.
 kubectl config get-contexts
 kubectl config use-context docker-desktop
+kubectl config current-context
 
 kubectl --help
 kubectl version
