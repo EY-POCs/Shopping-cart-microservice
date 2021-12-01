@@ -82,9 +82,10 @@ kubectl get replicaset
 
 kubectl delete deployment nginx-depl
 kubectl delete deployment mongo-depl
-kubectl delete pod <podname>
+kubectl delete pod <podname> 
 
 kubectl get pod --watch
+kubectl get pod -o wide --show all the attributes of pods.
 kubectl get replicaset
 ---------
 
@@ -97,7 +98,15 @@ kubectl run <imagename> --image-name --replicas 2
 
 Create resources using declarative mean.
 kubectl appy -f <filename.yaml>
+kubectl delete -f <filename.yaml> -- another way of deleting all the deployents specified in the file by label
 
+If we want yaml file of already running deployment.
+kubectl get deployment <dploymentname> -o yaml.
 	---------------------------------------------------------------
 	If we want to see our containers running in our pod, we use port-forwading
 kubectl port-forward swn-nginx 8080:80
+
+
+---------------------------------------------------------------
+Get Secretes in kubctl environment.
+kubectl get secrete -n kube-system -- get secretes exposed for kube-system user
