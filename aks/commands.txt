@@ -1,0 +1,5 @@
+create azure container registry after you logged in and created resources group
+1. az acr create --resource-group resourceGroupName --name acrName --sku Basic 
+----Enable the access key admin account--------------------------------------
+2. az acr update acrName --admin-enabled true
+3. az acr login -n MyRegistry --expose-token
