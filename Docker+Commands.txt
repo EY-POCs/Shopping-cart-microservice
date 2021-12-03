@@ -44,3 +44,9 @@ docker stop $(docker ps -aq)
 docker rm $(docker ps -aq)
 docker rmi $(docker images -q) -f
 docker system prune
+
+push to acr.
+tag the image by rebuiding with a new tag: acr-server/imageName/imageName:versionNumber 
+eg: docker build -t sampleacr.azurecr.io/sampleapp:v1
+Push. 
+docker push sampleacr.azurecr.io/sampleapp:v1

@@ -16,17 +16,17 @@ spec:
     spec:
       containers:
       - name: shoppingapi
-        image: dlktacr.azurecr.io/shoppingapi:v1
+        image: dlktacr.azurecr.io/shoppingapi:v2
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
         resources: 
           requests:
             memory: "64Mi"
-            cpu: "250m"
+            cpu: "0.3" # 30% of the over cpu usage
           limits:
             memory: "128Mi"
-            cpu: "500m"
+            cpu: "0.5" # 50%
         env: 
           - name: ASPNETCORE_ENVIRONMENT
             value: Development

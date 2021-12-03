@@ -8,3 +8,6 @@ Create a secrete that docker will use to authenticate with azure container regis
 kubectl create secret docker-registry secretename[eg: ac-secret] --docker-server=acrserverUri[eg:acrName.azurecr.io]
  --docker-username=acrName --docker-password=acr-passcode-after-enabled[eg:Ssasdfd5ErHGFAXtF58cNnm48y93BaE=uvEjoM]
 
+ az acr repository show-tags --name registryName --repository imageName --output table # get tags of specified image
+ az acr repository list --name registryName --output table # get all the images in the container
+

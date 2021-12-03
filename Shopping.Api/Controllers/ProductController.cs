@@ -36,5 +36,15 @@ namespace Shopping.Api.Controllers
                             .Find(x =>true)
                             .ToListAsync();
         }
+
+        [HttpPost]
+        public async Task<Product> PostAsync(Product product)
+        {
+            if(product == null)
+            {
+                return new Product(){};
+            }
+            return await _context.Add(product);
+        }
     }
 }

@@ -10,7 +10,6 @@ namespace Shopping.Api.Repository
 {
     public class ProductContext
     {
-        private readonly string connectionString;
         public ProductContext(IConfiguration configuration)
         {
             var client = new MongoClient(configuration["DatabaseSettings:ConnectionString"]);
@@ -83,6 +82,16 @@ namespace Shopping.Api.Repository
                 productCollection.InsertManyAsync(GetPreconfiguredProducts());
             }
 
+        }
+
+        public async Task<Product> Add(Product product)
+        {
+            if (product != null)
+            {
+                await Products.InsertOneAsync(product);
+                return product;
+            }
+            return new Product();
         }
     }
 }
