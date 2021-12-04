@@ -111,3 +111,8 @@ kubectl port-forward swn-nginx 8080:80
 ---------------------------------------------------------------
 Get Secretes in kubctl environment.
 kubectl get secrete -n kube-system -- get secretes exposed for kube-system user
+
+Updating the application in kubernetes.
+1. push the new version of the image into azure container registry.
+2. edit the your app deployment yaml file and edit the image version to either new one or rollback.
+3. kubectl apply -f folder-where-deployment-file-exist.
